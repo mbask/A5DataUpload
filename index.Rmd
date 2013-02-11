@@ -19,8 +19,8 @@ source("../include/functions.R")
 figName <- "A5DAMU-1"
 opts_chunk$set(
   fig.path = paste0("figure/", figName)
-  , fig.width = 12
-  , fig.height = 6
+  , fig.width = 13
+  , fig.height = 7
   , cache = FALSE
   , echo=FALSE
   )

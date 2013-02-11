@@ -31,7 +31,6 @@ Last updated ``2013-02-11``
 * Total number of parameters measured: ``218``
 * Total number of parameters uploaded: ``0`` (``0``%)
 * Total number of parameters metadated: ``3`` (``1.3761``%)
-```
 
 
 
