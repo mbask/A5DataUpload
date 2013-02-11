@@ -1,6 +1,6 @@
 ---
-title       : Data uploading and Metadata editing (15 Feb - 08 Mar 2013)
-subtitle    : Summary stats
+title       : Data uploading and Metadata editing
+subtitle    : (15 Feb - 08 Mar 2013) - Summary stats
 author      : Marco Bascietto, Giorgio Matteucci
 job         : EnvEurope A5 "Testing in the Field"
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
