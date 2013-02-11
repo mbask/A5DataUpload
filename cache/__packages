@@ -1,0 +1,13 @@
+lubridate
+ggplot2
+plyr
+RSQLite
+DBI
+slidify
+stats
+graphics
+grDevices
+utils
+datasets
+methods
+base

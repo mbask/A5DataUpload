@@ -1,0 +1,128 @@
+---
+title       : Data uploading and Metadata editing (15 Feb - 08 Mar 2013)
+subtitle    : Summary stats
+author      : Marco Bascietto, Giorgio Matteucci
+job         : EnvEurope A5 "Testing in the Field"
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+```{r "initialize", echo=FALSE, result=FALSE, warning=FALSE, cache=FALSE, include=FALSE}
+#setwd("A5-DataAndMetadataUpload")
+rm(list = ls())
+
+source("../include/DBSetup.R")
+source("../include/functions.R")
+figName <- "A5DAMU-1"
+opts_chunk$set(
+  fig.path = paste0("figure/", figName)
+  , fig.width = 12
+  , fig.height = 6
+  , cache = FALSE
+  , echo=FALSE
+  )
+
+
+library(plyr)
+library(ggplot2)
+library(lubridate)
+dbConnection <- with(db.sqlite.cfg, dbConnect(driver, dbname = fName))
+
+tmpDbResource     <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2011List)
+tmpParam2011_wdf <- fetchResults(tmpDbResource)
+tmpParam2011_wdf$year <- 2011
+tmpDbResource     <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2012List)
+tmpParam2012_wdf <- fetchResults(tmpDbResource)
+tmpParam2012_wdf$year <- 2012
+param_wdf <- rbind(tmpParam2011_wdf, tmpParam2012_wdf)
+
+param_wdf <- within(param_wdf, {
+  uploadedDate  <- ifelse(uploadedDate == 0, NA, yday(unix2POSIXct(uploadedDate)))
+  metadatedDate <- ifelse(metadatedDate == 0, NA, yday(unix2POSIXct(metadatedDate)))
+})
+
+rm(tmpParam2011_wdf, tmpParam2012_wdf)
+
+# Elimino tutte le righe con entrambi NA alla data di metadata e di upload
+param_wdf <- param_wdf[rowSums(is.na(param_wdf[,3:4])) < 2,]
+
+paramAggr_wdf <- ddply(
+  param_wdf
+  , .(metadatedDate, uploadedDate, domainName, year, countryName)
+  , summarize
+  , parameterNum = length(domainName)
+)
+
+paramAggr_df <- reshape(
+  paramAggr_wdf
+  , direction = "long"
+  , varying = 1:2
+  , times = colnames(paramAggr_wdf)[1:2]
+  , v.names = "dayOfYear"
+  , idvar = colnames(paramAggr_wdf)[3:5]
+  , timevar = "action"
+)
+paramAggr_df <- paramAggr_df[complete.cases(paramAggr_df),]
+row.names(paramAggr_df) <- NULL
+```
+
+
+## State of uploading process
+
+Last updated ```r as.character(Sys.Date())```
+
+### Year 2012 data
+
+* Total number of sites sampled in 2012: ```r tmpDbResource  <- dbSendQuery(dbConnection, db.sqlite.cfg$query$siteNumber); siteNumber <- fetchResults(tmpDbResource); siteNumber[[1]]```; stations: ```r tmpDbResource  <- dbSendQuery(dbConnection, db.sqlite.cfg$query$stationNumber); stationNumber <- fetchResults(tmpDbResource); stationNumber[[1]]```
+* Total number of parameters measured: ```r tmpDbResource  <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2012Number); param2012Number <- fetchResults(tmpDbResource); param2012Number[[1]]```
+* Total number of parameters uploaded: ```r uploaded <- sum(paramAggr_df$parameterNum[paramAggr_df$year == 2012 & paramAggr_df$action == "uploadedDate"]); uploaded``` (```r uploaded/param2012Number[[1]]*100```%)
+* Total number of parameters metadated: ```r metadated <- sum(paramAggr_df$parameterNum[paramAggr_df$year == 2012 & paramAggr_df$action == "metadatedDate"]); metadated``` (```r metadated/param2012Number[[1]]*100```%)
+
+
+### Year 2011 data
+
+* Total number of parameters measured: ```r tmpDbResource  <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2011Number); param2011Number <- fetchResults(tmpDbResource); param2011Number[[1]]```
+* Total number of parameters uploaded: ```r uploaded <- sum(paramAggr_df$parameterNum[paramAggr_df$year == 2011 & paramAggr_df$action == "uploadedDate"]); uploaded``` (```r uploaded/param2011Number[[1]]*100```%)
+* Total number of parameters metadated: ```r metadated <- sum(paramAggr_df$parameterNum[paramAggr_df$year == 2011 & paramAggr_df$action == "metadatedDate"]); metadated``` (```r metadated/param2011Number[[1]]*100```%)
+
+
+
+
+---
+
+## Aggregated data by domain
+
+```{r "aggrDataByDomain"}
+
+submissionPlot <- ggplot(paramAggr_df, aes(x = dayOfYear, y = parameterNum, fill = domainName)) +
+  geom_bar(stat = "identity") +
+  ylab("Daily submissions") +
+  xlab("Day of year") +
+  ggtitle("A5 data submissions") +
+  facet_grid(year~action, scales = "free_y") +
+  theme_bw()
+suppressWarnings(print(submissionPlot))
+```
+
+---
+
+## Aggregated data by country
+
+```{r "aggrDatabyCountry"}
+submissionPlot <- ggplot(paramAggr_df, aes(x = dayOfYear, y = parameterNum, fill = countryName)) +
+  geom_bar(stat = "identity") +
+  ylab("Daily submissions") +
+  xlab("Day of year") +
+  ggtitle("A5 data submissions") +
+  facet_grid(year~action, scales = "free_y") +
+  theme_bw()
+suppressWarnings(print(submissionPlot))
+```
+
+```{r "cleanAndQuit", echo=FALSE, results='hide'}
+rm(tmpDbResource)
+dbDisconnect(dbConnection)
+```
