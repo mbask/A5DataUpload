@@ -30,7 +30,7 @@ mode        : selfcontained # {standalone, draft}
 
 
 <!-- html table generated in R 2.15.2 by xtable 1.7-0 package -->
-<!-- Tue Feb 12 17:01:13 2013 -->
+<!-- Tue Feb 12 17:04:00 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
   <TR> <TD align="right"> Year2012 </TD> <TD align="right">  11 </TD> <TD align="right">   0 </TD> <TD align="right"> 1950 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
@@ -60,11 +60,10 @@ mode        : selfcontained # {standalone, draft}
 ---
 
 ## Submissions trend
-
-Count of parameters submitted *versus* ratio of submitted parameters over total count of parameters to be submitted. 
+ 
 
 <!-- MotionChart generated in R 2.15.2 by googleVis 0.3.3 package -->
-<!-- Tue Feb 12 17:01:14 2013 -->
+<!-- Tue Feb 12 17:04:01 2013 -->
 
 
 <!-- jsHeader -->
@@ -73,7 +72,7 @@ Count of parameters submitted *versus* ratio of submitted parameters over total 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID20919217494 ()
+function gvisDataMotionChartID209161d3be09 ()
 {
   var data = new google.visualization.DataTable();
   var datajson =
@@ -115,14 +114,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID20919217494() {
-  var data = gvisDataMotionChartID20919217494();
+function drawChartMotionChartID209161d3be09() {
+  var data = gvisDataMotionChartID209161d3be09();
   var options = {};
 options["width"] =    600;
 options["height"] =    500;
 
      var chart = new google.visualization.MotionChart(
-       document.getElementById('MotionChartID20919217494')
+       document.getElementById('MotionChartID209161d3be09')
      );
      chart.draw(data,options);
     
@@ -131,14 +130,14 @@ options["height"] =    500;
   
  
 // jsDisplayChart 
-function displayChartMotionChartID20919217494()
+function displayChartMotionChartID209161d3be09()
 {
   google.load("visualization", "1", { packages:["motionchart"] }); 
-  google.setOnLoadCallback(drawChartMotionChartID20919217494);
+  google.setOnLoadCallback(drawChartMotionChartID209161d3be09);
 }
  
 // jsChart 
-displayChartMotionChartID20919217494()
+displayChartMotionChartID209161d3be09()
  
 <!-- jsFooter -->  
 //-->
@@ -146,7 +145,7 @@ displayChartMotionChartID20919217494()
  
 <!-- divChart -->
   
-<div id="MotionChartID20919217494"
+<div id="MotionChartID209161d3be09"
   style="width: 600px; height: 500px;">
 </div>
 

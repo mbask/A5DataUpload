@@ -181,8 +181,7 @@ suppressWarnings(print(submissionPlot))
 ---
 
 ## Submissions trend
-
-Count of parameters submitted *versus* ratio of submitted parameters over total count of parameters to be submitted. 
+ 
 
 ```{r "motionChart", results='asis', tidy=FALSE}
 paramAggrDate_df <- within(paramAggr_df, {
