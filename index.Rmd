@@ -48,8 +48,6 @@ param_wdf <- within(param_wdf, {
   metadatedDate[metadatedDate == 0] <- NA
   metadatedDate <- unix2POSIXct(metadatedDate)
   year <- as.numeric(year)
-  #uploadDate   <- ifelse(uploadedDate == 0, NA, uploadedDate)
-  #metadataDate <- ifelse(metadatedDate == 0, 0, unix2POSIXct(metadatedDate))
 })
 
 # Elimino tutte le righe con entrambi NA alla data di metadata e di upload
@@ -73,6 +71,27 @@ paramAggr_df <- reshape(
 )
 paramAggr_df <- paramAggr_df[complete.cases(paramAggr_df),]
 row.names(paramAggr_df) <- NULL
+
+paramAggr_df$totParameters <- apply(
+  paramAggr_df, 1, function(x) {
+    if (x[["year"]] == 2012) {
+      execQuery(
+        'countParameters2012PerSite'
+        , dbConnection
+        , siteLTERCode = x[["siteLTERCode"]]
+        , domainName = x[["domainName"]]
+      )
+    } else {
+      execQuery(
+        'countParameters2011PerSite'
+        , dbConnection
+        , siteLTERCode = x[["siteLTERCode"]]
+        , domainName = x[["domainName"]]
+      )  
+    }
+  }
+)
+
 ```
 
 ```{r "siteCounts"}
@@ -166,12 +185,13 @@ suppressWarnings(print(submissionPlot))
 ```{r "motionChart", results='asis', tidy=FALSE}
 paramAggrDate_df <- within(paramAggr_df, {
   submissionDate <- as.Date(submissionDate)
+  submissionRatio <- parameterNum / totParameters
 })
 M <- gvisMotionChart(
   paramAggrDate_df
   , idvar="siteLTERCode"
   , timevar="submissionDate"
-  , xvar = "year"
+  , xvar = "submissionRatio"
   , yvar = "parameterNum"
   , colorvar = "countryName"
   )
