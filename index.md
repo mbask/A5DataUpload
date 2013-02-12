@@ -30,7 +30,7 @@ mode        : selfcontained # {standalone, draft}
 
 
 <!-- html table generated in R 2.15.2 by xtable 1.7-0 package -->
-<!-- Tue Feb 12 14:50:48 2013 -->
+<!-- Tue Feb 12 15:08:07 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
   <TR> <TD align="right"> Year2012 </TD> <TD align="right">  27 </TD> <TD align="right">   0 </TD> <TD align="right"> 1950 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
@@ -61,83 +61,36 @@ mode        : selfcontained # {standalone, draft}
 
 ## Motion chart
 
-<!-- MotionChart generated in R 2.15.2 by googleVis 0.3.3 package -->
-<!-- Tue Feb 12 14:50:48 2013 -->
 
+```
+## Warning: la condizione la lunghezza > 1 e solo il promo elemento verrà
+## utilizzato
+```
 
-<!-- jsHeader -->
-<script type="text/javascript" src="http://www.google.com/jsapi">
-</script>
-<script type="text/javascript">
- 
-// jsData 
-function gvisDataMotionChartID20914c5ccde2 ()
-{
-  var data = new google.visualization.DataTable();
-  var datajson =
-[
- [
- "Italy",
-43,
-"2012",
-27,
-"uploadedDate",
-"Marine" 
-],
-[
- "Austria",
-43,
-"2011",
-7,
-"uploadedDate",
-"Terrestrial" 
-] 
-];
-data.addColumn('string','countryName');
-data.addColumn('number','dayOfYear');
-data.addColumn('string','year');
-data.addColumn('number','parameterNum');
-data.addColumn('string','action');
-data.addColumn('string','domainName');
-data.addRows(datajson);
-return(data);
-}
- 
-// jsDrawChart
-function drawChartMotionChartID20914c5ccde2() {
-  var data = gvisDataMotionChartID20914c5ccde2();
-  var options = {};
-options["width"] =    600;
-options["height"] =    500;
+```
+## Warning: la condizione la lunghezza > 1 e solo il promo elemento verrà
+## utilizzato
+```
 
-     var chart = new google.visualization.MotionChart(
-       document.getElementById('MotionChartID20914c5ccde2')
-     );
-     chart.draw(data,options);
-    
+```
+## Warning: la condizione la lunghezza > 1 e solo il promo elemento verrà
+## utilizzato
+```
 
-}
-  
- 
-// jsDisplayChart 
-function displayChartMotionChartID20914c5ccde2()
-{
-  google.load("visualization", "1", { packages:["motionchart"] }); 
-  google.setOnLoadCallback(drawChartMotionChartID20914c5ccde2);
-}
- 
-// jsChart 
-displayChartMotionChartID20914c5ccde2()
- 
-<!-- jsFooter -->  
-//-->
-</script>
- 
-<!-- divChart -->
-  
-<div id="MotionChartID20914c5ccde2"
-  style="width: 600px; height: 500px;">
-</div>
+```
+## Warning: la condizione la lunghezza > 1 e solo il promo elemento verrà
+## utilizzato
+```
+
+```
+## Error: The timevar has to be of numeric or Date format. Currently it is
+## POSIXtThe timevar has to be of numeric or Date format. Currently it is
+## POSIXct
+```
+
+```
+## Error: oggetto "M" non trovato
+```
 
 
 

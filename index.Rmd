@@ -43,8 +43,12 @@ dbConnection <- with(db.sqlite.cfg, dbConnect(driver, dbname = fName))
 param_wdf <- execQuery('parameterSubmittedStatus', connection = dbConnection)
 
 param_wdf <- within(param_wdf, {
-  uploadedDate  <- ifelse(uploadedDate == 0, NA, yday(unix2POSIXct(uploadedDate)))
-  metadatedDate <- ifelse(metadatedDate == 0, NA, yday(unix2POSIXct(metadatedDate)))
+  uploadedDate[uploadedDate == 0] <- NA
+  uploadedDate <- unix2POSIXct(uploadedDate)
+  metadatedDate[metadatedDate == 0] <- NA
+  metadatedDate <- unix2POSIXct(metadatedDate)
+  #uploadDate   <- ifelse(uploadedDate == 0, NA, uploadedDate)
+  #metadataDate <- ifelse(metadatedDate == 0, 0, unix2POSIXct(metadatedDate))
 })
 
 # Elimino tutte le righe con entrambi NA alla data di metadata e di upload
@@ -62,7 +66,7 @@ paramAggr_df <- reshape(
   , direction = "long"
   , varying = 1:2
   , times = colnames(paramAggr_wdf)[1:2]
-  , v.names = "dayOfYear"
+  , v.names = "submissionDate"
   , idvar = colnames(paramAggr_wdf)[3:5]
   , timevar = "action"
 )
@@ -128,10 +132,10 @@ print(xtable(statsRaw, display = c("s", "d", "d", "d", "f", "f")), type = "html"
 
 ```{r "aggrDataByDomain"}
 
-submissionPlot <- ggplot(paramAggr_df, aes(x = dayOfYear, y = parameterNum, fill = domainName)) +
+submissionPlot <- ggplot(paramAggr_df, aes(x = submissionDate, y = parameterNum, fill = domainName)) +
   geom_bar(stat = "identity") +
   ylab("Daily submissions") +
-  xlab("Day of year") +
+  xlab("Submission date") +
   ggtitle("A5 data submissions") +
   facet_grid(year~action, scales = "free_y") +
   theme_bw()
@@ -143,10 +147,10 @@ suppressWarnings(print(submissionPlot))
 ## Aggregated data by country
 
 ```{r "aggrDatabyCountry"}
-submissionPlot <- ggplot(paramAggr_df, aes(x = dayOfYear, y = parameterNum, fill = countryName)) +
+submissionPlot <- ggplot(paramAggr_df, aes(x = submissionDate, y = parameterNum, fill = countryName)) +
   geom_bar(stat = "identity") +
   ylab("Daily submissions") +
-  xlab("Day of year") +
+  xlab("Submission date") +
   ggtitle("A5 data submissions") +
   facet_grid(year~action, scales = "free_y") +
   theme_bw()
@@ -162,9 +166,10 @@ suppressWarnings(print(submissionPlot))
 M <- gvisMotionChart(
   paramAggr_df
   , idvar="countryName"
-  , timevar="dayOfYear"
+  , timevar="submissionDate"
   , xvar = "year"
   , yvar = "parameterNum"
+  , colorvar = "countryName"
   )
 plot(M)
 ```
