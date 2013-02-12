@@ -11,7 +11,7 @@ mode        : selfcontained # {standalone, draft}
 ---
 
 ```{r "initialize", echo=FALSE, result=FALSE, warning=FALSE, cache=FALSE, include=FALSE}
-#setwd("A5-DataAndMetadataUpload")
+setwd("~/Documents/Academy/IBAF/ENVEUROPE/A5/DataUpload/A5-DataAndMetadataUpload")
 rm(list = ls())
 
 source("../include/DBSetup.R")
@@ -30,23 +30,22 @@ library(plyr)
 library(ggplot2)
 library(lubridate)
 library(xtable)
+library(sqlutils)
+sqlPaths("~/Documents/Academy/IBAF/ENVEUROPE/A5/DataUpload/SQL")
+library(googleVis)
+op <- options(gvis.plot.tag='chart')
+
+
 
 dbConnection <- with(db.sqlite.cfg, dbConnect(driver, dbname = fName))
 
-tmpDbResource     <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2011List)
-tmpParam2011_wdf <- fetchResults(tmpDbResource)
-tmpParam2011_wdf$year <- 2011
-tmpDbResource     <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2012List)
-tmpParam2012_wdf <- fetchResults(tmpDbResource)
-tmpParam2012_wdf$year <- 2012
-param_wdf <- rbind(tmpParam2011_wdf, tmpParam2012_wdf)
+# Get submission date from each year 2011 and 2012 parameter 
+param_wdf <- execQuery('parameterSubmittedStatus', connection = dbConnection)
 
 param_wdf <- within(param_wdf, {
   uploadedDate  <- ifelse(uploadedDate == 0, NA, yday(unix2POSIXct(uploadedDate)))
   metadatedDate <- ifelse(metadatedDate == 0, NA, yday(unix2POSIXct(metadatedDate)))
 })
-
-rm(tmpParam2011_wdf, tmpParam2012_wdf)
 
 # Elimino tutte le righe con entrambi NA alla data di metadata e di upload
 param_wdf <- param_wdf[rowSums(is.na(param_wdf[,3:4])) < 2,]
@@ -71,17 +70,10 @@ paramAggr_df <- paramAggr_df[complete.cases(paramAggr_df),]
 row.names(paramAggr_df) <- NULL
 ```
 
-```{r "siteNumbers"}
-tmpDbResource <- dbSendQuery(dbConnection, db.sqlite.cfg$query$siteNumber)
-siteNumber    <- fetchResults(tmpDbResource)[[1]]
-tmpDbResource <- dbSendQuery(dbConnection, db.sqlite.cfg$query$stationNumber)
-stationNumber <- fetchResults(tmpDbResource)[[1]]
-tmpDbResource <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2012Number)
-paramNumber <- list(
-  Y2012   = fetchResults(tmpDbResource)[[1]]
-  )
-tmpDbResource2  <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2011Number)
-paramNumber$Y2011 <- fetchResults(tmpDbResource2)[[1]]
+```{r "siteCounts"}
+siteCount    <- execQuery('siteCount', connection = dbConnection)[["siteCount"]]
+stationCount <- execQuery('stationCount', connection = dbConnection)[["stationCount"]]
+paramCount   <- execQuery('parameterCount', connection = dbConnection)
 ```
 
 
@@ -94,8 +86,8 @@ statsRaw <- matrix(
         , sum(parameterNum[year == 2011 & action == "uploadedDate"])
         , sum(parameterNum[year == 2012 & action == "metadatedDate"])
         , sum(parameterNum[year == 2011 & action == "metadatedDate"])
-        , paramNumber$Y2012
-        , paramNumber$Y2011
+        , paramCount$Y2012Count
+        , paramCount$Y2011Count
         )
       }
     )
@@ -107,8 +99,11 @@ statsRaw <- matrix(
   )
 statsRaw <- addmargins(statsRaw, margin = 1)
 
-statsRaw <- cbind(statsRaw, "Upload ratio" = statsRaw[,"No. uploaded"] / statsRaw[,"Total no."])
-statsRaw <- cbind(statsRaw, "Metadata ratio"= statsRaw[,"No. metadated"] / statsRaw[,"Total no."])
+statsRaw <- cbind(
+  statsRaw
+  , "Upload ratio"   = statsRaw[,"No. uploaded"] / statsRaw[,"Total no."]
+  , "Metadata ratio" = statsRaw[,"No. metadated"] / statsRaw[,"Total no."]
+  )
 ```
 
 
@@ -117,10 +112,7 @@ statsRaw <- cbind(statsRaw, "Metadata ratio"= statsRaw[,"No. metadated"] / stats
 * Last updated ```r as.character(Sys.Date())```
 * Deadline for data submission: `2013-03-08`
 * Days to deadline: ```r difftime(as.Date("2013-03-08",format="%Y-%m-%d"), Sys.Date(), units = "days")```
-
-
-
-* Total number of sites sampled in 2012: ```r siteNumber```; stations: ```r stationNumber```
+* Total number of sites sampled in 2012: ```r siteCount```; stations: ```r stationCount```
 
 
 ```{r "xtable",results='asis'}
@@ -164,4 +156,15 @@ suppressWarnings(print(submissionPlot))
 ```{r "cleanAndQuit", echo=FALSE, results='hide'}
 rm(tmpDbResource)
 dbDisconnect(dbConnection)
+options(op)
+```
+
+
+---
+
+## Motion chart
+
+```{r "MotionChart", results='asis', tidy=FALSE}
+M <- gvisMotionChart(paramAggr_df, idvar="countryName", timevar="dayOfYear")
+plot(M)
 ```
