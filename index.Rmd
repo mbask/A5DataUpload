@@ -44,9 +44,9 @@ param_wdf <- execQuery('parameterSubmittedStatus', connection = dbConnection)
 
 param_wdf <- within(param_wdf, {
   uploadedDate[uploadedDate == 0] <- NA
-  uploadedDate <- unix2POSIXct(uploadedDate)
+  uploadedDate <- as.Date(unix2POSIXct(uploadedDate))
   metadatedDate[metadatedDate == 0] <- NA
-  metadatedDate <- unix2POSIXct(metadatedDate)
+  metadatedDate <- as.Date(unix2POSIXct(metadatedDate))
   #uploadDate   <- ifelse(uploadedDate == 0, NA, uploadedDate)
   #metadataDate <- ifelse(metadatedDate == 0, 0, unix2POSIXct(metadatedDate))
 })
@@ -163,6 +163,9 @@ suppressWarnings(print(submissionPlot))
 ## Motion chart
 
 ```{r "motionChart", results='asis', tidy=FALSE}
+#paramAggrDate_df <- within(paramAggr_df, {
+#  submissionDate <- as.Date(submissionDate)
+#})
 M <- gvisMotionChart(
   paramAggr_df
   , idvar="countryName"
