@@ -44,9 +44,9 @@ param_wdf <- execQuery('parameterSubmittedStatus', connection = dbConnection)
 
 param_wdf <- within(param_wdf, {
   uploadedDate[uploadedDate == 0] <- NA
-  uploadedDate <- as.Date(unix2POSIXct(uploadedDate))
+  uploadedDate <- unix2POSIXct(uploadedDate)
   metadatedDate[metadatedDate == 0] <- NA
-  metadatedDate <- as.Date(unix2POSIXct(metadatedDate))
+  metadatedDate <- unix2POSIXct(metadatedDate)
   #uploadDate   <- ifelse(uploadedDate == 0, NA, uploadedDate)
   #metadataDate <- ifelse(metadatedDate == 0, 0, unix2POSIXct(metadatedDate))
 })
@@ -56,7 +56,7 @@ param_wdf <- param_wdf[rowSums(is.na(param_wdf[,3:4])) < 2,]
 
 paramAggr_wdf <- ddply(
   param_wdf
-  , .(metadatedDate, uploadedDate, domainName, year, countryName)
+  , .(metadatedDate, uploadedDate, domainName, year, countryName, siteLTERCode)
   , summarize
   , parameterNum = length(domainName)
 )
@@ -67,7 +67,7 @@ paramAggr_df <- reshape(
   , varying = 1:2
   , times = colnames(paramAggr_wdf)[1:2]
   , v.names = "submissionDate"
-  , idvar = colnames(paramAggr_wdf)[3:5]
+  , idvar = colnames(paramAggr_wdf)[3:6]
   , timevar = "action"
 )
 paramAggr_df <- paramAggr_df[complete.cases(paramAggr_df),]
@@ -163,12 +163,12 @@ suppressWarnings(print(submissionPlot))
 ## Motion chart
 
 ```{r "motionChart", results='asis', tidy=FALSE}
-#paramAggrDate_df <- within(paramAggr_df, {
-#  submissionDate <- as.Date(submissionDate)
-#})
+paramAggrDate_df <- within(paramAggr_df, {
+  submissionDate <- as.Date(submissionDate)
+})
 M <- gvisMotionChart(
-  paramAggr_df
-  , idvar="countryName"
+  paramAggrDate_df
+  , idvar="siteLTERCode"
   , timevar="submissionDate"
   , xvar = "year"
   , yvar = "parameterNum"
