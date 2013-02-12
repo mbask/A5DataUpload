@@ -164,7 +164,7 @@ M <- gvisMotionChart(
   , idvar="countryName"
   , timevar="dayOfYear"
   , xvar = "year"
-  , yvar = paramNum
+  , yvar = "paramNum"
   )
 plot(M)
 ```

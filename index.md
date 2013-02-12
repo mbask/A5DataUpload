@@ -30,7 +30,7 @@ mode        : selfcontained # {standalone, draft}
 
 
 <!-- html table generated in R 2.15.2 by xtable 1.7-0 package -->
-<!-- Tue Feb 12 14:48:02 2013 -->
+<!-- Tue Feb 12 14:48:47 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
   <TR> <TD align="right"> Year2012 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right"> 1950 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
@@ -63,7 +63,7 @@ mode        : selfcontained # {standalone, draft}
 
 
 ```
-## Error: oggetto "paramNum" non trovato
+## Error: Column paramNum does not exist.
 ```
 
 ```
