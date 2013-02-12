@@ -14,23 +14,33 @@ mode        : selfcontained # {standalone, draft}
 
 
 
+
+
+
+
+
+
+
 ## State of uploading process
 
-Last updated ``2013-02-11``
+* Last updated ``2013-02-12``
+* Deadline for data submission: `2013-03-08`
+* Days to deadline: ``24``
 
-### Year 2012 data
+
 
 * Total number of sites sampled in 2012: ``59``; stations: ``61``
-* Total number of parameters measured: ``1950``
-* Total number of parameters uploaded: ``36`` (``1.8462``%)
-* Total number of parameters metadated: ``27`` (``1.3846``%)
 
 
-### Year 2011 data
+<!-- html table generated in R 2.15.2 by xtable 1.7-0 package -->
+<!-- Tue Feb 12 08:58:20 2013 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
+  <TR> <TD align="right"> Year2012 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right"> 1950 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> Year2011 </TD> <TD align="right">   7 </TD> <TD align="right">   0 </TD> <TD align="right"> 218 </TD> <TD align="right"> 0.03 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> Sum </TD> <TD align="right">   7 </TD> <TD align="right">   0 </TD> <TD align="right"> 2168 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+   </TABLE>
 
-* Total number of parameters measured: ``218``
-* Total number of parameters uploaded: ``0`` (``0``%)
-* Total number of parameters metadated: ``3`` (``1.3761``%)
 
 
 

@@ -29,6 +29,8 @@ opts_chunk$set(
 library(plyr)
 library(ggplot2)
 library(lubridate)
+library(xtable)
+
 dbConnection <- with(db.sqlite.cfg, dbConnect(driver, dbname = fName))
 
 tmpDbResource     <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2011List)
@@ -69,24 +71,61 @@ paramAggr_df <- paramAggr_df[complete.cases(paramAggr_df),]
 row.names(paramAggr_df) <- NULL
 ```
 
+```{r "siteNumbers"}
+tmpDbResource <- dbSendQuery(dbConnection, db.sqlite.cfg$query$siteNumber)
+siteNumber    <- fetchResults(tmpDbResource)[[1]]
+tmpDbResource <- dbSendQuery(dbConnection, db.sqlite.cfg$query$stationNumber)
+stationNumber <- fetchResults(tmpDbResource)[[1]]
+tmpDbResource <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2012Number)
+paramNumber <- list(
+  Y2012   = fetchResults(tmpDbResource)[[1]]
+  )
+tmpDbResource2  <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2011Number)
+paramNumber$Y2011 <- fetchResults(tmpDbResource2)[[1]]
+```
+
+
+```{r "uploadedStats"}
+statsRaw <- matrix(
+  with(
+    paramAggr_df, {
+      c(
+        sum(parameterNum[year == 2012 & action == "uploadedDate"])
+        , sum(parameterNum[year == 2011 & action == "uploadedDate"])
+        , sum(parameterNum[year == 2012 & action == "metadatedDate"])
+        , sum(parameterNum[year == 2011 & action == "metadatedDate"])
+        , paramNumber$Y2012
+        , paramNumber$Y2011
+        )
+      }
+    )
+  , ncol = 3
+  , dimnames = list(
+    c("Year2012", "Year2011")
+    , c("No. uploaded", "No. metadated", "Total no.")
+    )
+  )
+statsRaw <- addmargins(statsRaw, margin = 1)
+
+statsRaw <- cbind(statsRaw, "Upload ratio" = statsRaw[,"No. uploaded"] / statsRaw[,"Total no."])
+statsRaw <- cbind(statsRaw, "Metadata ratio"= statsRaw[,"No. metadated"] / statsRaw[,"Total no."])
+```
+
 
 ## State of uploading process
 
-Last updated ```r as.character(Sys.Date())```
-
-### Year 2012 data
-
-* Total number of sites sampled in 2012: ```r tmpDbResource  <- dbSendQuery(dbConnection, db.sqlite.cfg$query$siteNumber); siteNumber <- fetchResults(tmpDbResource); siteNumber[[1]]```; stations: ```r tmpDbResource  <- dbSendQuery(dbConnection, db.sqlite.cfg$query$stationNumber); stationNumber <- fetchResults(tmpDbResource); stationNumber[[1]]```
-* Total number of parameters measured: ```r tmpDbResource  <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2012Number); param2012Number <- fetchResults(tmpDbResource); param2012Number[[1]]```
-* Total number of parameters uploaded: ```r uploaded <- sum(paramAggr_df$parameterNum[paramAggr_df$year == 2012 & paramAggr_df$action == "uploadedDate"]); uploaded``` (```r uploaded/param2012Number[[1]]*100```%)
-* Total number of parameters metadated: ```r metadated <- sum(paramAggr_df$parameterNum[paramAggr_df$year == 2012 & paramAggr_df$action == "metadatedDate"]); metadated``` (```r metadated/param2012Number[[1]]*100```%)
+* Last updated ```r as.character(Sys.Date())```
+* Deadline for data submission: `2013-03-08`
+* Days to deadline: ```r difftime(as.Date("2013-03-08",format="%Y-%m-%d"), Sys.Date(), units = "days")```
 
 
-### Year 2011 data
 
-* Total number of parameters measured: ```r tmpDbResource  <- dbSendQuery(dbConnection, db.sqlite.cfg$query$param2011Number); param2011Number <- fetchResults(tmpDbResource); param2011Number[[1]]```
-* Total number of parameters uploaded: ```r uploaded <- sum(paramAggr_df$parameterNum[paramAggr_df$year == 2011 & paramAggr_df$action == "uploadedDate"]); uploaded``` (```r uploaded/param2011Number[[1]]*100```%)
-* Total number of parameters metadated: ```r metadated <- sum(paramAggr_df$parameterNum[paramAggr_df$year == 2011 & paramAggr_df$action == "metadatedDate"]); metadated``` (```r metadated/param2011Number[[1]]*100```%)
+* Total number of sites sampled in 2012: ```r siteNumber```; stations: ```r stationNumber```
+
+
+```{r "xtable",results='asis'}
+print(xtable(statsRaw, display = c("s", "d", "d", "d", "f", "f")), type = "html")
+```
 
 
 
