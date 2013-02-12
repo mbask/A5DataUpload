@@ -33,7 +33,7 @@ library(xtable)
 library(sqlutils)
 sqlPaths("~/Documents/Academy/IBAF/ENVEUROPE/A5/DataUpload/SQL")
 library(googleVis)
-op <- options(gvis.plot.tag='chart')
+gVisOp <- options(gvis.plot.tag='chart')
 
 
 
@@ -153,18 +153,27 @@ submissionPlot <- ggplot(paramAggr_df, aes(x = dayOfYear, y = parameterNum, fill
 suppressWarnings(print(submissionPlot))
 ```
 
-```{r "cleanAndQuit", echo=FALSE, results='hide'}
-rm(tmpDbResource)
-dbDisconnect(dbConnection)
-options(op)
-```
-
 
 ---
 
 ## Motion chart
 
-```{r "MotionChart", results='asis', tidy=FALSE}
-M <- gvisMotionChart(paramAggr_df, idvar="countryName", timevar="dayOfYear")
+```{r "motionChart", results='asis', tidy=FALSE}
+M <- gvisMotionChart(
+  paramAggr_df
+  , idvar="countryName"
+  , timevar="dayOfYear"
+  , xvar = "year"
+  , yvar = paramNum
+  )
 plot(M)
 ```
+
+
+
+```{r "cleanAndQuit", echo=FALSE, results='hide'}
+rm(tmpDbResource)
+dbDisconnect(dbConnection)
+options(gVisOp)
+```
+
