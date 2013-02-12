@@ -30,7 +30,7 @@ mode        : selfcontained # {standalone, draft}
 
 
 <!-- html table generated in R 2.15.2 by xtable 1.7-0 package -->
-<!-- Tue Feb 12 16:49:01 2013 -->
+<!-- Tue Feb 12 16:56:43 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
   <TR> <TD align="right"> Year2012 </TD> <TD align="right">  27 </TD> <TD align="right">   0 </TD> <TD align="right"> 1950 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
@@ -61,18 +61,92 @@ mode        : selfcontained # {standalone, draft}
 
 ## Motion chart
 
+<!-- MotionChart generated in R 2.15.2 by googleVis 0.3.3 package -->
+<!-- Tue Feb 12 16:56:44 2013 -->
 
-```
-## Error: argomento non numerico trasformato in operatore binario
-```
 
-```
-## Error: Column siteLTERCode does not exist.
-```
+<!-- jsHeader -->
+<script type="text/javascript" src="http://www.google.com/jsapi">
+</script>
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataMotionChartID20915e5ed29f ()
+{
+  var data = new google.visualization.DataTable();
+  var datajson =
+[
+ [
+ "SI000049",
+new Date(2013,1,12),
+1,
+7,
+"Austria",
+"uploadedDate",
+2011,
+7,
+"Terrestrial" 
+],
+[
+ "SI001246",
+new Date(2013,1,12),
+2.454545455,
+27,
+"Italy",
+"uploadedDate",
+2012,
+11,
+"Marine" 
+] 
+];
+data.addColumn('string','siteLTERCode');
+data.addColumn('date','submissionDate');
+data.addColumn('number','submissionRatio');
+data.addColumn('number','parameterNum');
+data.addColumn('string','countryName');
+data.addColumn('string','action');
+data.addColumn('number','year');
+data.addColumn('number','totParameters');
+data.addColumn('string','domainName');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartMotionChartID20915e5ed29f() {
+  var data = gvisDataMotionChartID20915e5ed29f();
+  var options = {};
+options["width"] =    600;
+options["height"] =    500;
 
-```
-## Error: oggetto "M" non trovato
-```
+     var chart = new google.visualization.MotionChart(
+       document.getElementById('MotionChartID20915e5ed29f')
+     );
+     chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart 
+function displayChartMotionChartID20915e5ed29f()
+{
+  google.load("visualization", "1", { packages:["motionchart"] }); 
+  google.setOnLoadCallback(drawChartMotionChartID20915e5ed29f);
+}
+ 
+// jsChart 
+displayChartMotionChartID20915e5ed29f()
+ 
+<!-- jsFooter -->  
+//-->
+</script>
+ 
+<!-- divChart -->
+  
+<div id="MotionChartID20915e5ed29f"
+  style="width: 600px; height: 500px;">
+</div>
 
 
 

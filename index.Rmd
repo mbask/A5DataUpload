@@ -72,7 +72,7 @@ paramAggr_df <- reshape(
 paramAggr_df <- paramAggr_df[complete.cases(paramAggr_df),]
 row.names(paramAggr_df) <- NULL
 
-paramAggr_df$totParameters <- apply(
+paramAggr_df$totParameters <- unlist(apply(
   paramAggr_df, 1, function(x) {
     if (x[["year"]] == 2012) {
       execQuery(
@@ -90,7 +90,7 @@ paramAggr_df$totParameters <- apply(
       )  
     }
   }
-)
+))
 
 ```
 
