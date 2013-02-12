@@ -164,7 +164,7 @@ M <- gvisMotionChart(
   , idvar="countryName"
   , timevar="dayOfYear"
   , xvar = "year"
-  , yvar = "paramNum"
+  , yvar = "parameterNum"
   )
 plot(M)
 ```
@@ -172,7 +172,6 @@ plot(M)
 
 
 ```{r "cleanAndQuit", echo=FALSE, results='hide'}
-rm(tmpDbResource)
 dbDisconnect(dbConnection)
 options(gVisOp)
 ```
