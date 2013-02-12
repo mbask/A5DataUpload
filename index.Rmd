@@ -47,6 +47,7 @@ param_wdf <- within(param_wdf, {
   uploadedDate <- unix2POSIXct(uploadedDate)
   metadatedDate[metadatedDate == 0] <- NA
   metadatedDate <- unix2POSIXct(metadatedDate)
+  year <- as.numeric(year)
   #uploadDate   <- ifelse(uploadedDate == 0, NA, uploadedDate)
   #metadataDate <- ifelse(metadatedDate == 0, 0, unix2POSIXct(metadatedDate))
 })

@@ -30,7 +30,7 @@ mode        : selfcontained # {standalone, draft}
 
 
 <!-- html table generated in R 2.15.2 by xtable 1.7-0 package -->
-<!-- Tue Feb 12 15:17:30 2013 -->
+<!-- Tue Feb 12 15:19:22 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
   <TR> <TD align="right"> Year2012 </TD> <TD align="right">  27 </TD> <TD align="right">   0 </TD> <TD align="right"> 1950 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
@@ -62,7 +62,7 @@ mode        : selfcontained # {standalone, draft}
 ## Motion chart
 
 <!-- MotionChart generated in R 2.15.2 by googleVis 0.3.3 package -->
-<!-- Tue Feb 12 15:17:30 2013 -->
+<!-- Tue Feb 12 15:19:23 2013 -->
 
 
 <!-- jsHeader -->
@@ -71,7 +71,7 @@ mode        : selfcontained # {standalone, draft}
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID2091137bcedb ()
+function gvisDataMotionChartID209178463972 ()
 {
   var data = new google.visualization.DataTable();
   var datajson =
@@ -79,7 +79,7 @@ function gvisDataMotionChartID2091137bcedb ()
  [
  "SI000049",
 new Date(2013,1,12),
-"2011",
+2011,
 7,
 "Austria",
 "uploadedDate",
@@ -88,7 +88,7 @@ new Date(2013,1,12),
 [
  "SI001246",
 new Date(2013,1,12),
-"2012",
+2012,
 27,
 "Italy",
 "uploadedDate",
@@ -97,7 +97,7 @@ new Date(2013,1,12),
 ];
 data.addColumn('string','siteLTERCode');
 data.addColumn('date','submissionDate');
-data.addColumn('string','year');
+data.addColumn('number','year');
 data.addColumn('number','parameterNum');
 data.addColumn('string','countryName');
 data.addColumn('string','action');
@@ -107,14 +107,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID2091137bcedb() {
-  var data = gvisDataMotionChartID2091137bcedb();
+function drawChartMotionChartID209178463972() {
+  var data = gvisDataMotionChartID209178463972();
   var options = {};
 options["width"] =    600;
 options["height"] =    500;
 
      var chart = new google.visualization.MotionChart(
-       document.getElementById('MotionChartID2091137bcedb')
+       document.getElementById('MotionChartID209178463972')
      );
      chart.draw(data,options);
     
@@ -123,14 +123,14 @@ options["height"] =    500;
   
  
 // jsDisplayChart 
-function displayChartMotionChartID2091137bcedb()
+function displayChartMotionChartID209178463972()
 {
   google.load("visualization", "1", { packages:["motionchart"] }); 
-  google.setOnLoadCallback(drawChartMotionChartID2091137bcedb);
+  google.setOnLoadCallback(drawChartMotionChartID209178463972);
 }
  
 // jsChart 
-displayChartMotionChartID2091137bcedb()
+displayChartMotionChartID209178463972()
  
 <!-- jsFooter -->  
 //-->
@@ -138,7 +138,7 @@ displayChartMotionChartID2091137bcedb()
  
 <!-- divChart -->
   
-<div id="MotionChartID2091137bcedb"
+<div id="MotionChartID209178463972"
   style="width: 600px; height: 500px;">
 </div>
 
