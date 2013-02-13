@@ -30,7 +30,7 @@ mode        : selfcontained # {standalone, draft}
 
 
 <!-- html table generated in R 2.15.2 by xtable 1.7-0 package -->
-<!-- Wed Feb 13 07:44:41 2013 -->
+<!-- Wed Feb 13 07:45:36 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
   <TR> <TD align="right"> Year2012 </TD> <TD align="right">  11 </TD> <TD align="right">   0 </TD> <TD align="right"> 1950 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
@@ -49,12 +49,13 @@ mode        : selfcontained # {standalone, draft}
 ![plot of chunk aggrDataByDomain](figure/A5DAMU-1aggrDataByDomain.png) 
 
 
+---
 
 ## Submissions trend
  
 
 <!-- MotionChart generated in R 2.15.2 by googleVis 0.3.3 package -->
-<!-- Wed Feb 13 07:44:41 2013 -->
+<!-- Wed Feb 13 07:45:36 2013 -->
 
 
 <!-- jsHeader -->
@@ -63,7 +64,7 @@ mode        : selfcontained # {standalone, draft}
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID19a4e2f4d9c ()
+function gvisDataMotionChartID19a7cce2ca5 ()
 {
   var data = new google.visualization.DataTable();
   var datajson =
@@ -105,14 +106,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID19a4e2f4d9c() {
-  var data = gvisDataMotionChartID19a4e2f4d9c();
+function drawChartMotionChartID19a7cce2ca5() {
+  var data = gvisDataMotionChartID19a7cce2ca5();
   var options = {};
 options["width"] =    600;
 options["height"] =    500;
 
      var chart = new google.visualization.MotionChart(
-       document.getElementById('MotionChartID19a4e2f4d9c')
+       document.getElementById('MotionChartID19a7cce2ca5')
      );
      chart.draw(data,options);
     
@@ -121,14 +122,14 @@ options["height"] =    500;
   
  
 // jsDisplayChart 
-function displayChartMotionChartID19a4e2f4d9c()
+function displayChartMotionChartID19a7cce2ca5()
 {
   google.load("visualization", "1", { packages:["motionchart"] }); 
-  google.setOnLoadCallback(drawChartMotionChartID19a4e2f4d9c);
+  google.setOnLoadCallback(drawChartMotionChartID19a7cce2ca5);
 }
  
 // jsChart 
-displayChartMotionChartID19a4e2f4d9c()
+displayChartMotionChartID19a7cce2ca5()
  
 <!-- jsFooter -->  
 //-->
@@ -136,7 +137,7 @@ displayChartMotionChartID19a4e2f4d9c()
  
 <!-- divChart -->
   
-<div id="MotionChartID19a4e2f4d9c"
+<div id="MotionChartID19a7cce2ca5"
   style="width: 600px; height: 500px;">
 </div>
 

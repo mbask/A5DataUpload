@@ -171,6 +171,7 @@ submissionPlot <- ggplot(domainAggr_df, aes(x = countryName, y = totalParamCount
 suppressWarnings(print(submissionPlot))
 ```
 
+---
 
 ## Submissions trend
  
