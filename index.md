@@ -23,14 +23,14 @@ mode        : selfcontained # {standalone, draft}
 
 ## State of uploading process
 
-* Last updated ``2013-02-12``
+* Last updated ``2013-02-13``
 * Deadline for data submission: `2013-03-08`
-* Days to deadline: ``24``
+* Days to deadline: ``23``
 * Total number of sites sampled in 2012: ``59``; stations: ``61``
 
 
 <!-- html table generated in R 2.15.2 by xtable 1.7-0 package -->
-<!-- Tue Feb 12 17:04:00 2013 -->
+<!-- Wed Feb 13 07:44:41 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
   <TR> <TD align="right"> Year2012 </TD> <TD align="right">  11 </TD> <TD align="right">   0 </TD> <TD align="right"> 1950 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
@@ -44,26 +44,17 @@ mode        : selfcontained # {standalone, draft}
 
 ---
 
-## Aggregated data by domain
+## Aggregated data
 
 ![plot of chunk aggrDataByDomain](figure/A5DAMU-1aggrDataByDomain.png) 
 
 
----
-
-## Aggregated data by country
-
-![plot of chunk aggrDatabyCountry](figure/A5DAMU-1aggrDatabyCountry.png) 
-
-
-
----
 
 ## Submissions trend
  
 
 <!-- MotionChart generated in R 2.15.2 by googleVis 0.3.3 package -->
-<!-- Tue Feb 12 17:04:01 2013 -->
+<!-- Wed Feb 13 07:44:41 2013 -->
 
 
 <!-- jsHeader -->
@@ -72,7 +63,7 @@ mode        : selfcontained # {standalone, draft}
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID209161d3be09 ()
+function gvisDataMotionChartID19a4e2f4d9c ()
 {
   var data = new google.visualization.DataTable();
   var datajson =
@@ -114,14 +105,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID209161d3be09() {
-  var data = gvisDataMotionChartID209161d3be09();
+function drawChartMotionChartID19a4e2f4d9c() {
+  var data = gvisDataMotionChartID19a4e2f4d9c();
   var options = {};
 options["width"] =    600;
 options["height"] =    500;
 
      var chart = new google.visualization.MotionChart(
-       document.getElementById('MotionChartID209161d3be09')
+       document.getElementById('MotionChartID19a4e2f4d9c')
      );
      chart.draw(data,options);
     
@@ -130,14 +121,14 @@ options["height"] =    500;
   
  
 // jsDisplayChart 
-function displayChartMotionChartID209161d3be09()
+function displayChartMotionChartID19a4e2f4d9c()
 {
   google.load("visualization", "1", { packages:["motionchart"] }); 
-  google.setOnLoadCallback(drawChartMotionChartID209161d3be09);
+  google.setOnLoadCallback(drawChartMotionChartID19a4e2f4d9c);
 }
  
 // jsChart 
-displayChartMotionChartID209161d3be09()
+displayChartMotionChartID19a4e2f4d9c()
  
 <!-- jsFooter -->  
 //-->
@@ -145,7 +136,7 @@ displayChartMotionChartID209161d3be09()
  
 <!-- divChart -->
   
-<div id="MotionChartID209161d3be09"
+<div id="MotionChartID19a4e2f4d9c"
   style="width: 600px; height: 500px;">
 </div>
 

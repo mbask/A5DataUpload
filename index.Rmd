@@ -70,6 +70,7 @@ paramAggr_df <- reshape(
   , timevar = "action"
 )
 paramAggr_df <- paramAggr_df[complete.cases(paramAggr_df),]
+paramAggr_df$action <- factor(paramAggr_df$action)
 row.names(paramAggr_df) <- NULL
 
 paramAggr_df$totParameters <- unlist(apply(
@@ -148,37 +149,28 @@ print(xtable(statsRaw, display = c("s", "d", "d", "d", "f", "f")), type = "html"
 
 ---
 
-## Aggregated data by domain
+## Aggregated data
 
 ```{r "aggrDataByDomain"}
+domainAggr_df <- ddply(
+  paramAggr_df
+  , .(domainName, countryName, action)
+  , summarise
+  , totalParamCount = sum(parameterNum)
+  )
+levels(domainAggr_df$action) <- "Dataset uploaded"
+#levels(domainAggr_df$action) <- c("Dataset uploaded", "Dataset metadated")
 
-submissionPlot <- ggplot(paramAggr_df, aes(x = submissionDate, y = parameterNum, fill = domainName)) +
+submissionPlot <- ggplot(domainAggr_df, aes(x = countryName, y = totalParamCount, fill = domainName)) +
   geom_bar(stat = "identity") +
-  ylab("Daily submissions") +
-  xlab("Submission date") +
+  ylab("Total count of parameters submitted") +
+  xlab("Country name") +
   ggtitle("A5 data submissions") +
-  facet_grid(year~action, scales = "free_y") +
+  facet_wrap(~action) +
   theme_bw()
 suppressWarnings(print(submissionPlot))
 ```
 
----
-
-## Aggregated data by country
-
-```{r "aggrDatabyCountry"}
-submissionPlot <- ggplot(paramAggr_df, aes(x = submissionDate, y = parameterNum, fill = countryName)) +
-  geom_bar(stat = "identity") +
-  ylab("Daily submissions") +
-  xlab("Submission date") +
-  ggtitle("A5 data submissions") +
-  facet_grid(year~action, scales = "free_y") +
-  theme_bw()
-suppressWarnings(print(submissionPlot))
-```
-
-
----
 
 ## Submissions trend
  
