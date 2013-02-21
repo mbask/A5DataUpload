@@ -1,13 +1,16 @@
 ---
 title       : Data uploading and Metadata editing
-subtitle    : (15 Feb - 08 Mar 2013) - Summary stats
+subtitle    : 15 Feb - 08 Mar 2013 - Summary stats
 author      : Marco Bascietto, Giorgio Matteucci
-job         : EnvEurope A5 "Testing in the Field"
+job         : EnvEurope A5 "Testing in the Field" - Use arrows to move between slides
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
+github:
+  user: mbask
+  repo: A5DataUpload
 ---
 
 ```{r "initialize", echo=FALSE, result=FALSE, warning=FALSE, cache=FALSE, include=FALSE}
@@ -59,14 +62,14 @@ paramAggr_wdf <- ddply(
   , summarize
   , parameterNum = length(domainName)
 )
-
+paramAggr_wdf$row <- seq(1:nrow(paramAggr_wdf))
 paramAggr_df <- reshape(
   paramAggr_wdf
   , direction = "long"
   , varying = 1:2
   , times = colnames(paramAggr_wdf)[1:2]
   , v.names = "submissionDate"
-  , idvar = colnames(paramAggr_wdf)[3:6]
+  , idvar = colnames(paramAggr_wdf)[c(3:6, 8)]
   , timevar = "action"
 )
 paramAggr_df <- paramAggr_df[complete.cases(paramAggr_df),]
@@ -177,10 +180,18 @@ suppressWarnings(print(submissionPlot))
  
 
 ```{r "motionChart", results='asis', tidy=FALSE}
-paramAggrDate_df <- within(paramAggr_df, {
-  submissionDate <- as.Date(submissionDate)
-  submissionRatio <- parameterNum / totParameters
-})
+paramAggrDate_df$submissionDate <- as.Date(paramAggrDate_df$submissionDate)
+
+paramAggrDate_df <- ddply(
+  paramAggrDate_df
+  , .(siteLTERCode, domainName, submissionDate, action, countryName)
+  , summarise
+  , totParameters = sum(totParameters)
+  , parameterNum  = sum(parameterNum)
+  )
+
+paramAggrDate_df$submissionRatio <- with(paramAggrDate_df, parameterNum / totParameters)
+
 M <- gvisMotionChart(
   paramAggrDate_df
   , idvar="siteLTERCode"
