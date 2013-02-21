@@ -182,6 +182,8 @@ suppressWarnings(print(submissionPlot))
 ```{r "motionChart", results='asis', tidy=FALSE}
 paramAggrDate_df$submissionDate <- as.Date(paramAggrDate_df$submissionDate)
 
+# Aggreghiamoli per giornata di sottomissione in modo che non ci siano più record
+# per ciascun sito e data di sottomissione
 paramAggrDate_df <- ddply(
   paramAggrDate_df
   , .(siteLTERCode, domainName, submissionDate, action, countryName)
