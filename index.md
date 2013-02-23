@@ -26,19 +26,19 @@ github:
 
 ## State of uploading process
 
-* Last updated ``2013-02-21``
+* Last updated ``2013-02-23``
 * Deadline for data submission: `2013-03-08`
-* Days to deadline: ``15``
+* Days to deadline: ``13``
 * Total number of sites sampled in 2012: ``60``; stations: ``63``
 
 
 <!-- html table generated in R 2.15.2 by xtable 1.7-0 package -->
-<!-- Thu Feb 21 18:18:12 2013 -->
+<!-- Sat Feb 23 08:44:32 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
-  <TR> <TD align="right"> Year2012 </TD> <TD align="right">  18 </TD> <TD align="right">   0 </TD> <TD align="right"> 1972 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> Year2012 </TD> <TD align="right">  24 </TD> <TD align="right">   0 </TD> <TD align="right"> 1976 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
   <TR> <TD align="right"> Year2011 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right"> 242 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> Sum </TD> <TD align="right">  18 </TD> <TD align="right">   0 </TD> <TD align="right"> 2214 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> Sum </TD> <TD align="right">  24 </TD> <TD align="right">   0 </TD> <TD align="right"> 2218 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
    </TABLE>
 
 
@@ -58,7 +58,7 @@ github:
  
 
 <!-- MotionChart generated in R 2.15.2 by googleVis 0.3.3 package -->
-<!-- Thu Feb 21 18:18:12 2013 -->
+<!-- Sat Feb 23 08:44:32 2013 -->
 
 
 <!-- jsHeader -->
@@ -67,12 +67,22 @@ github:
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID358b1eb2ac8f ()
+function gvisDataMotionChartID2382ced80e6 ()
 {
   var data = new google.visualization.DataTable();
   var datajson =
 [
  [
+ "SI000315TMP",
+new Date(2013,1,23),
+0.375,
+6,
+"Germany",
+16,
+"uploadedDate",
+"Marine" 
+],
+[
  "SI001231-Cedrino",
 new Date(2013,1,21),
 0.75,
@@ -106,14 +116,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID358b1eb2ac8f() {
-  var data = gvisDataMotionChartID358b1eb2ac8f();
+function drawChartMotionChartID2382ced80e6() {
+  var data = gvisDataMotionChartID2382ced80e6();
   var options = {};
 options["width"] =    600;
 options["height"] =    500;
 
      var chart = new google.visualization.MotionChart(
-       document.getElementById('MotionChartID358b1eb2ac8f')
+       document.getElementById('MotionChartID2382ced80e6')
      );
      chart.draw(data,options);
     
@@ -122,14 +132,14 @@ options["height"] =    500;
   
  
 // jsDisplayChart 
-function displayChartMotionChartID358b1eb2ac8f()
+function displayChartMotionChartID2382ced80e6()
 {
   google.load("visualization", "1", { packages:["motionchart"] }); 
-  google.setOnLoadCallback(drawChartMotionChartID358b1eb2ac8f);
+  google.setOnLoadCallback(drawChartMotionChartID2382ced80e6);
 }
  
 // jsChart 
-displayChartMotionChartID358b1eb2ac8f()
+displayChartMotionChartID2382ced80e6()
  
 <!-- jsFooter -->  
 //-->
@@ -137,7 +147,7 @@ displayChartMotionChartID358b1eb2ac8f()
  
 <!-- divChart -->
   
-<div id="MotionChartID358b1eb2ac8f"
+<div id="MotionChartID2382ced80e6"
   style="width: 600px; height: 500px;">
 </div>
 
