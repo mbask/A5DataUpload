@@ -26,19 +26,19 @@ github:
 
 ## State of uploading process
 
-* Last updated ``2013-02-23``
+* Last updated ``2013-02-24``
 * Deadline for data submission: `2013-03-08`
-* Days to deadline: ``13``
+* Days to deadline: ``12``
 * Total number of sites sampled in 2012: ``60``; stations: ``63``
 
 
 <!-- html table generated in R 2.15.2 by xtable 1.7-0 package -->
-<!-- Sat Feb 23 08:44:32 2013 -->
+<!-- Sun Feb 24 06:11:28 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
-  <TR> <TD align="right"> Year2012 </TD> <TD align="right">  24 </TD> <TD align="right">   0 </TD> <TD align="right"> 1976 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> Year2012 </TD> <TD align="right">  26 </TD> <TD align="right">   0 </TD> <TD align="right"> 1976 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
   <TR> <TD align="right"> Year2011 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right"> 242 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> Sum </TD> <TD align="right">  24 </TD> <TD align="right">   0 </TD> <TD align="right"> 2218 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> Sum </TD> <TD align="right">  26 </TD> <TD align="right">   0 </TD> <TD align="right"> 2218 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.00 </TD> </TR>
    </TABLE>
 
 
@@ -58,7 +58,7 @@ github:
  
 
 <!-- MotionChart generated in R 2.15.2 by googleVis 0.3.3 package -->
-<!-- Sat Feb 23 08:44:32 2013 -->
+<!-- Sun Feb 24 06:11:29 2013 -->
 
 
 <!-- jsHeader -->
@@ -67,7 +67,7 @@ github:
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID2382ced80e6 ()
+function gvisDataMotionChartID2382e4963dc ()
 {
   var data = new google.visualization.DataTable();
   var datajson =
@@ -77,6 +77,16 @@ function gvisDataMotionChartID2382ced80e6 ()
 new Date(2013,1,23),
 0.375,
 6,
+"Germany",
+16,
+"uploadedDate",
+"Marine" 
+],
+[
+ "SI000315TMP",
+new Date(2013,1,24),
+0.125,
+2,
 "Germany",
 16,
 "uploadedDate",
@@ -116,14 +126,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID2382ced80e6() {
-  var data = gvisDataMotionChartID2382ced80e6();
+function drawChartMotionChartID2382e4963dc() {
+  var data = gvisDataMotionChartID2382e4963dc();
   var options = {};
 options["width"] =    600;
 options["height"] =    500;
 
      var chart = new google.visualization.MotionChart(
-       document.getElementById('MotionChartID2382ced80e6')
+       document.getElementById('MotionChartID2382e4963dc')
      );
      chart.draw(data,options);
     
@@ -132,14 +142,14 @@ options["height"] =    500;
   
  
 // jsDisplayChart 
-function displayChartMotionChartID2382ced80e6()
+function displayChartMotionChartID2382e4963dc()
 {
   google.load("visualization", "1", { packages:["motionchart"] }); 
-  google.setOnLoadCallback(drawChartMotionChartID2382ced80e6);
+  google.setOnLoadCallback(drawChartMotionChartID2382e4963dc);
 }
  
 // jsChart 
-displayChartMotionChartID2382ced80e6()
+displayChartMotionChartID2382e4963dc()
  
 <!-- jsFooter -->  
 //-->
@@ -147,7 +157,7 @@ displayChartMotionChartID2382ced80e6()
  
 <!-- divChart -->
   
-<div id="MotionChartID2382ced80e6"
+<div id="MotionChartID2382e4963dc"
   style="width: 600px; height: 500px;">
 </div>
 
