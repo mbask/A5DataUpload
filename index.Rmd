@@ -38,6 +38,10 @@ sqlPaths("~/Documents/Academy/IBAF/ENVEUROPE/A5/DataUpload/SQL")
 library(googleVis)
 gVisOp <- options(gvis.plot.tag='chart')
 
+submissionWindowDates <- list(
+  start = as.Date("2013-02-15")
+  , end = as.Date("2013-03-08")
+  )
 
 
 dbConnection <- with(db.sqlite.cfg, dbConnect(driver, dbname = fName))
@@ -139,7 +143,7 @@ statsRaw <- cbind(
 
 * Last updated ```r as.character(Sys.Date())```
 * Deadline for data submission: `2013-03-08`
-* Days to deadline: ```r difftime(as.Date("2013-03-08",format="%Y-%m-%d"), Sys.Date(), units = "days")```
+* Days to deadline: ```r difftime(submissionWindowDates$end, Sys.Date(), units = "days")```
 * Total number of sites sampled in 2012: ```r siteCount```; stations: ```r stationCount```
 
 
@@ -176,35 +180,75 @@ suppressWarnings(print(submissionPlot))
 
 ---
 
-## Submissions trend
+## Submissions time line trend
  
 
-```{r "motionChart", results='asis', tidy=FALSE}
+```{r "timeLineChart", results='asis', tidy=FALSE}
+
 paramAggrDate_df <- within(paramAggr_df, {
   submissionDate <- as.Date(submissionDate)
 })
 
+
+# Creo un data.frame che abbia tante righe quanti sono i giorni della finestra di
+# sottomissione di A5 (15 febbraio 2013 - 8 marzo 2013) per dominio per azione
+tmpRange <- seq(
+  from = submissionWindowDates$start
+  , to = submissionWindowDates$end
+  , by = 1
+  )
+tmpDomains <- execQuery('domainNames', connection = dbConnection)$domainName
+tmpActions <- c("uploadedDate", "metadatedDate")
+tmpCountries <- execQuery('countryNames', connection = dbConnection)$countryName
+submissionWindow <- expand.grid(
+  tmpRange
+  , tmpDomains
+  , tmpActions
+  , tmpCountries
+  )
+colnames(submissionWindow) <- c("submissionDate", "domainName", "action", "countryName")
+
+submissionWindowParameters <- merge(
+  submissionWindow
+  , paramAggrDate_df[, colnames(paramAggrDate_df) %in% c("submissionDate", "countryName", "domainName", "action", "parameterNum")]
+  , all = TRUE
+  )
+rm(submissionWindow, list=ls(pattern="^tmp"))
+
+# Assegno 0 a tutti i NA nella colonna parameterNum, necessario per calcolare la somma cumulata
+submissionWindowParameters$parameterNum[is.na(submissionWindowParameters$parameterNum)] <- 0
+
 # Aggreghiamoli per giornata di sottomissione in modo che non ci siano più record
 # per ciascun sito e data di sottomissione
-paramAggrDate_df <- ddply(
-  paramAggrDate_df
-  , .(siteLTERCode, domainName, submissionDate, action, countryName)
+submissionWindowParameters <- ddply(
+  submissionWindowParameters
+  , .(domainName, submissionDate, action, countryName)
   , summarise
-  , totParameters = sum(totParameters)
   , parameterNum  = sum(parameterNum)
+)
+
+# ordino per dominio e data
+submissionWindowParameters <- submissionWindowParameters[order(submissionWindowParameters$domainName, submissionWindowParameters$submissionDate), ]
+
+# Somma cumulata dei parametri per dominio
+submissionWindowParameters <- ddply(
+  submissionWindowParameters
+  , .(domainName, action, countryName)
+  , transform
+  , cumParameter = cumsum(parameterNum)
   )
 
-paramAggrDate_df$submissionRatio <- with(paramAggrDate_df, parameterNum / totParameters)
+#
+car::recode
 
-M <- gvisMotionChart(
-  paramAggrDate_df
-  , idvar="siteLTERCode"
-  , timevar="submissionDate"
-  , xvar = "submissionRatio"
-  , yvar = "parameterNum"
-  , colorvar = "countryName"
-  )
-plot(M)
+ggplot(submissionWindowParameters) +
+  geom_area(aes(x = submissionDate, y = cumParameter, fill = domainName)) +
+  ylab("Cumulative count of parameters submitted") +
+  xlab("Submission date") +
+  ggtitle("Time line of A5 data submissions") +
+  facet_grid(countryName~action) +
+  theme_bw()
+
 ```
 
 
