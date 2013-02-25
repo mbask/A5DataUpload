@@ -239,7 +239,7 @@ submissionWindowParameters <- ddply(
   )
 
 #
-car::recode
+submissionWindowParameters$action <- ifelse(submissionWindowParameters$action == "uploadedDate", "Uploaded datasets", "Metadated datasets")
 
 ggplot(submissionWindowParameters) +
   geom_area(aes(x = submissionDate, y = cumParameter, fill = domainName)) +
