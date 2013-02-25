@@ -239,13 +239,13 @@ submissionWindowParameters <- ddply(
   )
 
 #
-submissionWindowParameters$action <- ifelse(submissionWindowParameters$action == "uploadedDate", "Uploaded datasets", "Metadated datasets")
+submissionWindowParameters$action <- ifelse(submissionWindowParameters$action == "uploadedDate", "Uploaded", "Metadated")
 
 ggplot(submissionWindowParameters) +
   geom_area(aes(x = submissionDate, y = cumParameter, fill = domainName)) +
   ylab("Cumulative count of parameters submitted") +
   xlab("Submission date") +
-  ggtitle("Time line of A5 data submissions") +
+  ggtitle("Time line of submissions of parameters to A5") +
   facet_grid(countryName~action) +
   theme_bw()
 
