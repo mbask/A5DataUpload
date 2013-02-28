@@ -33,7 +33,7 @@ github:
 
 
 <!-- html table generated in R 2.15.2 by xtable 1.7-0 package -->
-<!-- Thu Feb 28 07:20:19 2013 -->
+<!-- Thu Feb 28 07:23:21 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
   <TR> <TD align="right"> Year2012 </TD> <TD align="right">  95 </TD> <TD align="right">  25 </TD> <TD align="right"> 1976 </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.01 </TD> </TR>
@@ -48,11 +48,6 @@ github:
 ---
 
 ## Aggregated data
-
-
-```
-## Error: number of levels differs
-```
 
 ![plot of chunk aggrDataByDomain](figure/A5DAMU-1aggrDataByDomain.png) 
 

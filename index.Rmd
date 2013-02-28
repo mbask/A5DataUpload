@@ -165,8 +165,8 @@ domainAggr_df <- ddply(
   , summarise
   , totalParamCount = sum(parameterNum)
   )
-levels(domainAggr_df$action) <- "Dataset uploaded"
-#levels(domainAggr_df$action) <- c("Dataset uploaded", "Dataset metadated")
+#levels(domainAggr_df$action) <- "Dataset uploaded"
+levels(domainAggr_df$action) <- c("Dataset metadated", "Dataset uploaded")
 
 submissionPlot <- ggplot(domainAggr_df, aes(x = countryName, y = totalParamCount, fill = domainName)) +
   geom_bar(stat = "identity") +
