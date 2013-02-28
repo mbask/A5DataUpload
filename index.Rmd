@@ -144,9 +144,9 @@ statsRaw <- cbind(
 * Last updated ```r as.character(Sys.Date())```
 * Deadline for data submission: `2013-03-08`
 * Days to deadline: ```r difftime(submissionWindowDates$end, Sys.Date(), units = "days")```
-* Total number of sites sampled in 2012: ```r siteCount```; stations: ```r stationCount```
+* Total number of sites sampled in 2012: ```r siteCount```; sub-sites: ```r stationCount```
 
-
+Parameters uploaded and metadated:
 ```{r "xtable",results='asis'}
 print(xtable(statsRaw, display = c("s", "d", "d", "d", "f", "f")), type = "html")
 ```
