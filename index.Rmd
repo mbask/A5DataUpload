@@ -246,7 +246,7 @@ ggplot(submissionWindowParameters) +
   ylab("Cumulative count of parameters submitted") +
   xlab("Submission date") +
   ggtitle("Time line of submissions of parameters to A5") +
-  facet_grid(countryName~action) +
+  facet_grid(action~countryName) +
   theme_bw()
 
 ```
