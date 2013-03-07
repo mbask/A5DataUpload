@@ -183,7 +183,7 @@ suppressWarnings(print(submissionPlot))
 ## Submissions time line trend
  
 
-```{r "timeLineChart", results='asis', tidy=FALSE}
+```{r "timeLineChart", fig.width=14}
 
 paramAggrDate_df <- within(paramAggr_df, {
   submissionDate <- as.Date(submissionDate)
@@ -241,14 +241,16 @@ submissionWindowParameters <- ddply(
 #
 submissionWindowParameters$action <- ifelse(submissionWindowParameters$action == "uploadedDate", "Uploaded", "Metadated")
 
-ggplot(submissionWindowParameters) +
+g <- ggplot(submissionWindowParameters) +
   geom_area(aes(x = submissionDate, y = cumParameter, fill = domainName)) +
   ylab("Cumulative count of parameters submitted") +
   xlab("Submission date") +
   ggtitle("Time line of submissions of parameters to A5") +
   facet_grid(action~countryName) +
-  theme_bw()
-
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  theme(legend.position = "bottom")
+print(g)
 ```
 
 
