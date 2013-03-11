@@ -15,9 +15,10 @@ github:
 
 ```{r "initialize", echo=FALSE, result=FALSE, warning=FALSE, cache=FALSE, include=FALSE}
 rm(list = ls())
-
+source("../include/00-instantPkgs.R")
 source("../include/DBSetup.R")
 source("../include/unix2POSIXct.R")
+instantPkgs(c("plyr", "ggplot2", "lubridate", "xtable"))
 
 figName <- "A5DAMU-1"
 opts_chunk$set(
@@ -27,12 +28,6 @@ opts_chunk$set(
   , cache = FALSE
   , echo=FALSE
   )
-
-
-library(plyr)
-library(ggplot2)
-library(lubridate)
-library(xtable)
 
 submissionWindowDates <- list(
   start = as.Date("2013-02-15")
