@@ -14,7 +14,6 @@ github:
 ---
 
 ```{r "initialize", echo=FALSE, result=FALSE, warning=FALSE, cache=FALSE, include=FALSE}
-setwd("~/Documents/Academy/IBAF/ENVEUROPE/A5/DataUpload/A5-DataAndMetadataUpload")
 rm(list = ls())
 
 source("../include/DBSetup.R")
