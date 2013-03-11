@@ -17,7 +17,8 @@ github:
 rm(list = ls())
 
 source("../include/DBSetup.R")
-source("../include/functions.R")
+source("../include/unix2POSIXct.R")
+
 figName <- "A5DAMU-1"
 opts_chunk$set(
   fig.path = paste0("figure/", figName)
@@ -32,8 +33,6 @@ library(plyr)
 library(ggplot2)
 library(lubridate)
 library(xtable)
-library(sqlutils)
-sqlPaths("~/Documents/Academy/IBAF/ENVEUROPE/A5/DataUpload/SQL")
 
 submissionWindowDates <- list(
   start = as.Date("2013-02-15")
