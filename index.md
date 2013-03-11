@@ -33,7 +33,7 @@ github:
 
 Parameters uploaded and metadated:
 <!-- html table generated in R 2.15.3 by xtable 1.7-0 package -->
-<!-- Mon Mar 11 10:47:52 2013 -->
+<!-- Mon Mar 11 10:49:12 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
   <TR> <TD align="right"> Year2012 </TD> <TD align="right"> 174 </TD> <TD align="right"> 172 </TD> <TD align="right"> 2025 </TD> <TD align="right"> 0.09 </TD> <TD align="right"> 0.08 </TD> </TR>
@@ -63,8 +63,5 @@ Parameters uploaded and metadated:
 
 
 
-```
-## Error: oggetto "gVisOp" non trovato
-```
 
 

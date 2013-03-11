@@ -255,6 +255,5 @@ print(g)
 
 ```{r "cleanAndQuit", echo=FALSE, results='hide'}
 dbDisconnect(dbConnection)
-options(gVisOp)
 ```
 
