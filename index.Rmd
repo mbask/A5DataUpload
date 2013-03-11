@@ -35,8 +35,6 @@ library(lubridate)
 library(xtable)
 library(sqlutils)
 sqlPaths("~/Documents/Academy/IBAF/ENVEUROPE/A5/DataUpload/SQL")
-library(googleVis)
-gVisOp <- options(gvis.plot.tag='chart')
 
 submissionWindowDates <- list(
   start = as.Date("2013-02-15")
@@ -194,7 +192,7 @@ paramAggrDate_df <- within(paramAggr_df, {
 # sottomissione di A5 (15 febbraio 2013 - 8 marzo 2013) per dominio per azione
 tmpRange <- seq(
   from = submissionWindowDates$start
-  , to = submissionWindowDates$end
+  , to = Sys.Date()
   , by = 1
   )
 tmpDomains <- execQuery('domainNames', connection = dbConnection)$domainName
