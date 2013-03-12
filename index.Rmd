@@ -16,7 +16,7 @@ github:
 ```{r "initialize", echo=FALSE, result=FALSE, warning=FALSE, cache=FALSE, include=FALSE}
 rm(list = ls())
 source("../include/00-instantPkgs.R")
-source("../include/DBSetup.R")
+source("../include/DBFunctions.R")
 source("../include/unix2POSIXct.R")
 instantPkgs(c("plyr", "ggplot2", "lubridate", "xtable"))
 
