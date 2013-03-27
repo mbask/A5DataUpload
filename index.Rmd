@@ -182,7 +182,7 @@ paramAggrDate_df <- within(paramAggr_df, {
 
 
 # Creo un data.frame che abbia tante righe quanti sono i giorni della finestra di
-# sottomissione di A5 (15 febbraio 2013 - 8 marzo 2013) per dominio per azione
+# sottomissione di A5 (15 febbraio 2013 - oggi) per dominio per azione
 tmpRange <- seq(
   from = submissionWindowDates$start
   , to = Sys.Date()
