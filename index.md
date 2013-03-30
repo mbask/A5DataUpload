@@ -33,7 +33,7 @@ github:
 
 Parameters uploaded and metadated:
 <!-- html table generated in R 2.15.3 by xtable 1.7-0 package -->
-<!-- Sat Mar 30 14:31:01 2013 -->
+<!-- Sat Mar 30 14:32:46 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
   <TR> <TD align="right"> Year2012 </TD> <TD align="right"> 175 </TD> <TD align="right"> 236 </TD> <TD align="right"> 2026 </TD> <TD align="right"> 0.09 </TD> <TD align="right"> 0.12 </TD> </TR>
