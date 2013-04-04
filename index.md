@@ -26,19 +26,19 @@ github:
 
 ## State of uploading process
 
-* Last updated ``2013-04-02``
+* Last updated ``2013-04-04``
 * Deadline for data submission: `2013-03-08`
-* Days to deadline: ``-25``
+* Days to deadline: ``-27``
 * Total number of sites sampled in 2012: ``61``; sub-sites: ``65``
 
 Parameters uploaded and metadated:
 <!-- html table generated in R 2.15.3 by xtable 1.7-0 package -->
-<!-- Tue Apr  2 19:11:14 2013 -->
+<!-- Thu Apr  4 08:54:36 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
-  <TR> <TD align="right"> Year2012 </TD> <TD align="right"> 177 </TD> <TD align="right"> 236 </TD> <TD align="right"> 2026 </TD> <TD align="right"> 0.09 </TD> <TD align="right"> 0.12 </TD> </TR>
-  <TR> <TD align="right"> Year2011 </TD> <TD align="right">  41 </TD> <TD align="right">  69 </TD> <TD align="right"> 265 </TD> <TD align="right"> 0.15 </TD> <TD align="right"> 0.26 </TD> </TR>
-  <TR> <TD align="right"> Sum </TD> <TD align="right"> 218 </TD> <TD align="right"> 305 </TD> <TD align="right"> 2291 </TD> <TD align="right"> 0.10 </TD> <TD align="right"> 0.13 </TD> </TR>
+  <TR> <TD align="right"> Year2012 </TD> <TD align="right"> 183 </TD> <TD align="right"> 242 </TD> <TD align="right"> 2026 </TD> <TD align="right"> 0.09 </TD> <TD align="right"> 0.12 </TD> </TR>
+  <TR> <TD align="right"> Year2011 </TD> <TD align="right">  42 </TD> <TD align="right">  70 </TD> <TD align="right"> 265 </TD> <TD align="right"> 0.16 </TD> <TD align="right"> 0.26 </TD> </TR>
+  <TR> <TD align="right"> Sum </TD> <TD align="right"> 225 </TD> <TD align="right"> 312 </TD> <TD align="right"> 2291 </TD> <TD align="right"> 0.10 </TD> <TD align="right"> 0.14 </TD> </TR>
    </TABLE>
 
 
