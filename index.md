@@ -26,14 +26,14 @@ github:
 
 ## State of uploading process
 
-* Last updated ``2013-04-25``
+* Last updated ``2013-05-02``
 * Deadline for data submission: `2013-03-08`
-* Days to deadline: ``-48``
+* Days to deadline: ``-55``
 * Total number of sites sampled in 2012: ``61``; sub-sites: ``65``
 
 Parameters uploaded and metadated:
 <!-- html table generated in R 3.0.0 by xtable 1.7-1 package -->
-<!-- Thu Apr 25 20:27:27 2013 -->
+<!-- Thu May  2 08:37:38 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
   <TR> <TD align="right"> Year2012 </TD> <TD align="right"> 253 </TD> <TD align="right"> 355 </TD> <TD align="right"> 2025 </TD> <TD align="right"> 0.12 </TD> <TD align="right"> 0.18 </TD> </TR>
