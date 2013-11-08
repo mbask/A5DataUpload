@@ -33,12 +33,12 @@ github:
 
 Parameters uploaded and metadated:
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Fri Nov  8 12:22:25 2013 -->
+<!-- Fri Nov  8 12:23:06 2013 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> No. uploaded </TH> <TH> No. metadated </TH> <TH> Total no. </TH> <TH> Upload ratio </TH> <TH> Metadata ratio </TH>  </TR>
-  <TR> <TD align="right"> Year2012 </TD> <TD align="right"> 517 </TD> <TD align="right"> 480 </TD> <TD align="right"> 1044 </TD> <TD align="right"> 0.50 </TD> <TD align="right"> 0.46 </TD> </TR>
+  <TR> <TD align="right"> Year2012 </TD> <TD align="right"> 524 </TD> <TD align="right"> 488 </TD> <TD align="right"> 1044 </TD> <TD align="right"> 0.50 </TD> <TD align="right"> 0.47 </TD> </TR>
   <TR> <TD align="right"> Year2011 </TD> <TD align="right"> 143 </TD> <TD align="right"> 126 </TD> <TD align="right"> 275 </TD> <TD align="right"> 0.52 </TD> <TD align="right"> 0.46 </TD> </TR>
-  <TR> <TD align="right"> Sum </TD> <TD align="right"> 660 </TD> <TD align="right"> 606 </TD> <TD align="right"> 1319 </TD> <TD align="right"> 0.50 </TD> <TD align="right"> 0.46 </TD> </TR>
+  <TR> <TD align="right"> Sum </TD> <TD align="right"> 667 </TD> <TD align="right"> 614 </TD> <TD align="right"> 1319 </TD> <TD align="right"> 0.51 </TD> <TD align="right"> 0.47 </TD> </TR>
    </TABLE>
 
 
